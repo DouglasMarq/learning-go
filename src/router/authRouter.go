@@ -7,7 +7,7 @@ import (
 )
 
 // AuthRouter is for routing auth handler
-func AuthRouter(app *fiber.App) error {
+func AuthRouter(app fiber.Router) {
 
 	api := app.Group("/auth")
 
@@ -16,5 +16,4 @@ func AuthRouter(app *fiber.App) error {
 	// api.Get("/token", middleware.ProtectedUser, controller.CheckTokenHandler)
 	// api.Get("/refresh-token", controller.RequestTokenHandler)
 
-	return nil
 }

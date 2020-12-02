@@ -2,8 +2,9 @@ package controller
 
 import "github.com/gofiber/fiber/v2"
 
-func RegisterController(c *fiber.Ctx) error {
-	return c.Status(200).JSON(fiber.Map{
+// RegisterController test
+func RegisterController(ctx *fiber.Ctx) error {
+	return ctx.Status(200).JSON(fiber.Map{
 		"message": "OK",
 	})
 }

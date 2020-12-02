@@ -1,7 +1,7 @@
 package router
 
 import (
-	controller "learning-go/src/controller"
+	"learning-go/src/controller"
 
 	"github.com/gofiber/fiber/v2"
 )

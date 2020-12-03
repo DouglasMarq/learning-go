@@ -8,6 +8,8 @@ import (
 	"log"
 
 	"github.com/gofiber/fiber/v2"
+	"github.com/gofiber/fiber/v2/middleware/compress"
+	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 )
@@ -22,6 +24,17 @@ func main() {
 	app := fiber.New(fiber.Config{
 		Prefork: *prod, // go run app.go -prod
 	})
+
+	// app.Use(helmet.New())
+
+	app.Use(cors.New(cors.Config{
+		AllowMethods:  "GET,PUT,POST,DELETE,OPTIONS",
+		ExposeHeaders: "Content-Type,Authorization,Accept",
+	}))
+
+	app.Use(compress.New(compress.Config{
+		Level: compress.LevelBestSpeed,
+	}))
 
 	// Middleware
 	app.Use(recover.New())

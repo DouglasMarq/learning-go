@@ -10,11 +10,6 @@ func UserList(c *fiber.Ctx) error {
 		"success": true,
 		"user":    "testUser",
 	})
-
-	// return c.JSON(fiber.Map{
-	// 	"success": true,
-	// 	"user":    "testUser",
-	// })
 }
 
 // UserCreate registers a user

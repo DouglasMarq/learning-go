@@ -22,7 +22,7 @@ var (
 func main() {
 	// Create fiber app
 	app := fiber.New(fiber.Config{
-		Prefork: *prod,
+		Prefork:       *prod,
 		CaseSensitive: true,
 	})
 
@@ -44,7 +44,7 @@ func main() {
 	//Auth handling
 	router.AuthRouter(app)
 
-	app.Use(func (c *fiber.Ctx) error {
+	app.Use(func(c *fiber.Ctx) error {
 		return c.Status(404).JSON(fiber.Map{"message": "Route doesn't exist."})
 	})
 

@@ -24,8 +24,3 @@ func UserCreate(c *fiber.Ctx) error {
 		"user":    "testUser",
 	})
 }
-
-// NotFound returns custom 404 page
-func NotFound(c *fiber.Ctx) error {
-	return c.Status(404).SendString("Rota não existe.")
-}

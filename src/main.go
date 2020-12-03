@@ -1,7 +1,6 @@
 package main
 
 import (
-	"learning-go/src/handlers"
 	"learning-go/src/router"
 
 	"flag"
@@ -45,7 +44,9 @@ func main() {
 	//Auth handling
 	router.AuthRouter(app)
 
-	app.Use(handlers.NotFound)
+	app.Use(func (c *fiber.Ctx) error {
+		return c.Status(404).JSON(fiber.Map{"message": "Route doesn't exist."})
+	})
 
 	// Listen on port 3000
 	log.Fatal(app.Listen(*port)) // go run app.go -port=:3000

@@ -1,19 +1,19 @@
 package router
 
 import (
-	"learning-go/src/controller"
+	"learning-go/src/handlers"
 
 	"github.com/gofiber/fiber/v2"
 )
 
 // AuthRouter is for routing auth handler
-func AuthRouter(app fiber.Router) {
+func AuthRouter(app *fiber.App) {
 
-	api := app.Group("/auth")
 
-	// api.Post("/login", controller.LoginHandler)
-	api.Post("/register", controller.RegisterController)
-	// api.Get("/token", middleware.ProtectedUser, controller.CheckTokenHandler)
-	// api.Get("/refresh-token", controller.RequestTokenHandler)
+	// Create a /api/v1 endpoint
+	v1 := app.Group("/api/v1")
 
+	// Bind handlers
+	v1.Get("/users", handlers.UserList)
+	v1.Post("/users", handlers.UserCreate)
 }

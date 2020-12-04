@@ -1,6 +1,8 @@
 package main
 
 import (
+	"fmt"
+	"learning-go/src/database"
 	"learning-go/src/router"
 
 	"flag"
@@ -19,7 +21,36 @@ var (
 	prod = flag.Bool("prod", true, "Enable prefork in Production")
 )
 
+type testStruct struct {
+	username string
+	email    string
+	password string
+}
+
 func main() {
+
+	var test = database.Connection()
+
+	testUser := testStruct{"firstUser", "douglas.marq.alves@outlook.com", "555555666555"}
+
+	//testing
+	collection := test.Database("Cluster0").Collection("users")
+
+	res, err := collection.Find(nil, testUser)
+
+	if err != nil {
+		log.Fatal(err)
+	} else {
+		for res.Next(nil) {
+			var elem testStruct
+			err := res.Decode(&elem)
+			if err != nil {
+				log.Fatal(err)
+			}
+			fmt.Println(elem)
+		}
+	}
+
 	// Create fiber app
 	app := fiber.New(fiber.Config{
 		Prefork:       *prod,

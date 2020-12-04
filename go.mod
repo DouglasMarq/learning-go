@@ -8,6 +8,6 @@ require (
 	github.com/gofiber/helmet v0.1.2
 	github.com/gofiber/helmet/v2 v2.1.0
 	github.com/klauspost/compress v1.11.3 // indirect
-	go.mongodb.org/mongo-driver v1.4.4 // indirect
+	go.mongodb.org/mongo-driver v1.4.4
 	golang.org/x/sys v0.0.0-20201202213521-69691e467435 // indirect
 )

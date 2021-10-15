@@ -9,7 +9,6 @@ import (
 // AuthRouter is for routing auth handler
 func AuthRouter(app *fiber.App) {
 
-
 	// Create a /api/v1 endpoint
 	v1 := app.Group("/api/v1")
 

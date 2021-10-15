@@ -25,8 +25,8 @@ var (
 
 type userStruct struct {
 	Username string `bson:"username" json:"username"`
-	Email    string `bson:"email" json"email"`
-	Password string `bson:"password" json"password"`
+	Email    string `bson:"email" json:"email"`
+	Password string `bson:"password" json:"password"`
 }
 
 func main() {

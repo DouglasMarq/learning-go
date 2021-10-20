@@ -11,6 +11,7 @@ require (
 	github.com/gofiber/helmet v0.1.2
 	github.com/gofiber/helmet/v2 v2.2.3
 	github.com/golang/snappy v0.0.4 // indirect
+	github.com/googollee/go-socket.io v1.6.1 // indirect
 	github.com/valyala/fasthttp v1.31.0 // indirect
 	github.com/xdg/scram v1.0.3 // indirect
 	github.com/xdg/stringprep v1.0.3 // indirect

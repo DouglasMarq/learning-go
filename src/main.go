@@ -1,9 +1,6 @@
 package main
 
 import (
-	"context"
-	"fmt"
-	"learning-go/src/database"
 	"learning-go/src/router"
 
 	"flag"
@@ -15,7 +12,8 @@ import (
 	"github.com/gofiber/fiber/v2/middleware/logger"
 	"github.com/gofiber/fiber/v2/middleware/recover"
 	"github.com/gofiber/helmet/v2"
-	"go.mongodb.org/mongo-driver/bson"
+
+	socketio "github.com/googollee/go-socket.io"
 )
 
 var (
@@ -30,27 +28,7 @@ type userStruct struct {
 }
 
 func main() {
-	var connection = database.Connection()
-
-	user := userStruct{"IDPBBrisa", "douglas.marq.alves@outlook.com", "1234"}
-	var foundUser userStruct
-
-	//testing
-	collection := connection.Database("Cluster0").Collection("users")
-
-	err := collection.FindOne(context.Background(), bson.M{"email": user.Email}).Decode(&foundUser)
-
-	if err != nil {
-		result, err := collection.InsertOne(context.Background(), bson.M{"username": user.Username, "password": user.Password, "email": user.Email})
-		if err != nil {
-			// log.Fatal(err)
-			fmt.Println(err)
-		}
-		if error := collection.FindOne(context.Background(), bson.M{"_id": result.InsertedID}).Decode(&foundUser); error != nil {
-			log.Fatal(error)
-		}
-	}
-	fmt.Println(foundUser)
+	serverIO := socketio.NewServer(nil)
 
 	// Create fiber app
 	app := fiber.New(fiber.Config{
